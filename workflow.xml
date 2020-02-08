@@ -4,8 +4,15 @@
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
-            <exec>echo</exec>
-            <argument>my_output=Hello Oozie</argument>
+            <configuration>
+                <property>
+                        <name>mapred.job.queue.name</name>
+                        <value>${queueName}</value>
+                </property>
+            </configuration>
+            <exec>${shellAction}</exec>
+            <argument>${inputdir}</argument>
+            <file>${shellAction}#${shellAction}</file>
             <capture-output/>
         </shell>
         <ok to="end"/>
