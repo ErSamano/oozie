@@ -11,7 +11,7 @@
                 </property>
             </configuration>
             <exec>${shellAction}</exec>
-            <argument>${inputdir}</argument>
+            <argument>${inputDir}</argument>
             <file>${shellAction}#${shellAction}</file>
             <capture-output/>
         </shell>
@@ -24,8 +24,8 @@
             <subject>Workflow's output ${wf:id()}</subject>
             <body>Results from the shell script execution: ${wf:actionData('shell-node')['NumberOfLines']}</body>
         </email>
-        <ok to="end">
-        <error to"fail"> 
+        <ok to="end"/>
+        <error to="fail"/> 
     </action>
     <kill name="fail">
         <message>Shell action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
